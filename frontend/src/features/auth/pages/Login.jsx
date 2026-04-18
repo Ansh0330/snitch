@@ -2,35 +2,29 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../hook/useAuth";
 
-export default function Register() {
-  const { handleRegister } = useAuth();
+export default function Login() {
+  const { handleLogin } = useAuth();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    fullName: "",
     email: "",
-    contactNumber: "",
     password: "",
-    isSeller: false,
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted", formData);
-    await handleRegister({
-      fullname: formData.fullName,
+    console.log("Login Form Submitted", formData);
+    await handleLogin({
       email: formData.email,
-      contact: formData.contactNumber,
       password: formData.password,
-      isSeller: formData.isSeller,
     });
 
     navigate("/");
@@ -51,20 +45,20 @@ export default function Register() {
         <img
           alt="High-end luxury fashion"
           className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
-          src="https://images.unsplash.com/photo-1635408182516-bafaff7680b9?q=80&w=1006&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2070&auto=format&fit=crop"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#131313] via-[#131313]/60 to-transparent flex flex-col justify-end p-12 lg:p-16 xl:p-24 pb-16 xl:pb-20">
           <div className="max-w-md relative z-10 hover:translate-y-[-5px] transition-transform duration-700">
             <span className="text-[#ffd700] text-[0.75rem] font-bold tracking-[0.4em] uppercase mb-4 block shadow-sm">
-              The Ethos
+              The Inner Circle
             </span>
             <h1 className="text-[3rem] xl:text-[4rem] font-black leading-tight tracking-tighter text-[#fff6df] mb-6 drop-shadow-lg">
-              CURATE THE <br /> EXCEPTIONAL
+              RESUME <br /> EXCELLENCE
             </h1>
             <p className="text-[#d0c6ab] text-base xl:text-lg leading-relaxed font-light opacity-90 mix-blend-screen bg-transparent">
-              Luxe is a sanctuary for those who command the room. We forge
-              uncompromising silhouettes and rare pieces that define modern
-              opulence without saying a word.
+              Your curation awaits. Step back into the Luxe ecosystem to access
+              your private wardrobe, seamless checkouts, and early drops
+              strictly reserved for members.
             </p>
           </div>
         </div>
@@ -72,7 +66,7 @@ export default function Register() {
         <div className="absolute top-24 left-12 w-24 h-24 border-t border-l border-[#4d4732] opacity-30"></div>
       </section>
 
-      {/* Right Side: Registration Form */}
+      {/* Right Side: Login Form */}
       <section className="w-full lg:w-1/2 bg-[#131313] overflow-hidden flex flex-col relative text-left">
         {/* Top Controls Container - strictly pinned overlay */}
         <div className="absolute top-0 left-0 w-full p-8 lg:p-10 xl:p-12 flex justify-between items-center z-20">
@@ -102,37 +96,19 @@ export default function Register() {
           {/* Header Text - Measured Vertical Limits */}
           <header className="mb-8 xl:mb-10 mt-12 lg:mt-0">
             <h2 className="text-[2rem] lg:text-[2.25rem] xl:text-[2.75rem] font-black tracking-tight text-[#fff6df] leading-none mb-2 xl:mb-3">
-              Begin Journey
+              Welcome Back
             </h2>
             <p className="text-[0.65rem] mt-4 xl:text-[0.75rem] uppercase tracking-[0.25em] text-[#d0c6ab] font-medium opacity-80">
-              Create your exclusive account
+              Access your exclusive account
             </p>
           </header>
 
           <form
             onSubmit={handleSubmit}
-            className="space-y-5 xl:space-y-6 max-w-[30rem] w-full shrink-0"
+            className="space-y-6 lg:space-y-8 max-w-[30rem] w-full shrink-0"
           >
             {/* Form Fields Container */}
-            <div className="space-y-4 xl:space-y-5">
-              {/* Full Name */}
-              <div className="group">
-                <label className="block text-[0.65rem] xl:text-[0.7rem] font-bold text-[#d0c6ab] uppercase tracking-widest mb-1.5 ml-1 opacity-70 group-focus-within:opacity-100 transition-opacity">
-                  Full Name
-                </label>
-                <div className="bg-[#1c1b1b] rounded-xl px-4 lg:px-5 py-3.5 xl:py-4 focus-within:ring-1 focus-within:ring-[#FFD700]/50 transition-all duration-300 cursor-text">
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-transparent border-none p-0 text-[#fff6df] placeholder:text-[#999077] focus:ring-0 font-medium tracking-wide outline-none focus:outline-none cursor-text"
-                    placeholder="ALEXANDER VANCE"
-                  />
-                </div>
-              </div>
-
+            <div className="space-y-5 xl:space-y-6">
               {/* Email Address */}
               <div className="group">
                 <label className="block text-[0.65rem] xl:text-[0.7rem] font-bold text-[#d0c6ab] uppercase tracking-widest mb-1.5 ml-1 opacity-70 group-focus-within:opacity-100 transition-opacity">
@@ -151,92 +127,52 @@ export default function Register() {
                 </div>
               </div>
 
-              {/* Contact & Password Row */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
-                <div className="group">
-                  <label className="block text-[0.65rem] xl:text-[0.7rem] font-bold text-[#d0c6ab] uppercase tracking-widest mb-1.5 ml-1 opacity-70 group-focus-within:opacity-100 transition-opacity">
-                    Contact
-                  </label>
-                  <div className="bg-[#1c1b1b] rounded-xl px-4 lg:px-5 py-3.5 xl:py-4 focus-within:ring-1 focus-within:ring-[#FFD700]/50 transition-all duration-300 cursor-text">
-                    <input
-                      type="tel"
-                      name="contactNumber"
-                      value={formData.contactNumber}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-transparent border-none p-0 text-[#fff6df] placeholder:text-[#999077] focus:ring-0 font-medium tracking-wide outline-none focus:outline-none cursor-text"
-                      placeholder="+1 (000) 000"
-                    />
-                  </div>
-                </div>
-
-                <div className="group">
-                  <label className="block text-[0.65rem] xl:text-[0.7rem] font-bold text-[#d0c6ab] uppercase tracking-widest mb-1.5 ml-1 opacity-70 group-focus-within:opacity-100 transition-opacity">
+              {/* Password */}
+              <div className="group">
+                <div className="flex justify-between items-center mb-1.5 px-1">
+                  <label className="block text-[0.65rem] xl:text-[0.7rem] font-bold text-[#d0c6ab] uppercase tracking-widest opacity-70 group-focus-within:opacity-100 transition-opacity">
                     Password
                   </label>
-                  <div className="bg-[#1c1b1b] rounded-xl px-4 lg:px-5 py-3.5 xl:py-4 focus-within:ring-1 focus-within:ring-[#FFD700]/50 transition-all duration-300 relative cursor-text">
-                    <input
-                      type="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-transparent border-none p-0 text-[#fff6df] placeholder:text-[#999077] focus:ring-0 font-medium tracking-widest outline-none focus:outline-none pr-8 cursor-text"
-                      placeholder="••••••••"
-                    />
-                  </div>
+                  <Link
+                    to="/forgot-password"
+                    className="text-[0.6rem] text-[#d0c6ab] opacity-60 hover:opacity-100 hover:text-[#ffd700] transition-colors border-b border-transparent hover:border-[#ffd700]"
+                  >
+                    Forgot?
+                  </Link>
+                </div>
+                <div className="bg-[#1c1b1b] rounded-xl px-4 lg:px-5 py-3.5 xl:py-4 focus-within:ring-1 focus-within:ring-[#FFD700]/50 transition-all duration-300 relative cursor-text">
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-transparent border-none p-0 text-[#fff6df] placeholder:text-[#999077] focus:ring-0 font-medium tracking-widest outline-none focus:outline-none pr-8 cursor-text"
+                    placeholder="••••••••"
+                  />
                 </div>
               </div>
-            </div>
-
-            {/* Become a Seller Section */}
-            <div
-              className="bg-[#181818] border border-transparent hover:border-[#353534] rounded-xl p-4 lg:p-5 flex items-center justify-between group cursor-pointer transition-colors"
-              onClick={() =>
-                setFormData((prev) => ({ ...prev, isSeller: !prev.isSeller }))
-              }
-            >
-              <div>
-                <h4 className="text-[#fff6df] font-bold text-[0.8rem] xl:text-[0.85rem] tracking-wide group-hover:text-[#ffd700] transition-colors">
-                  Become a Seller
-                </h4>
-                <p className="text-[#d0c6ab] text-[0.6rem] xl:text-[0.65rem] uppercase tracking-[0.1em] opacity-60 mt-1">
-                  Apply for merchant status
-                </p>
-              </div>
-              <label className="relative inline-flex items-center cursor-pointer pointer-events-none shrink-0 mt-1 sm:mt-0">
-                <input
-                  type="checkbox"
-                  name="isSeller"
-                  checked={formData.isSeller}
-                  readOnly
-                  className="sr-only peer"
-                />
-                <div className="w-11 h-6 lg:w-12 lg:h-6 bg-[#252525] peer-focus:outline-none rounded-full peer peer-checked:bg-[#ffd700] after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-[#d0c6ab] peer-checked:after:bg-[#3a3000] after:border-[#131313] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full"></div>
-              </label>
             </div>
 
             {/* Primary Action & Alternate flows */}
-            <div className="pt-3 xl:pt-4 flex flex-col items-center">
+            <div className="pt-4 xl:pt-6 flex flex-col items-center">
               <button
                 type="submit"
                 className="w-full bg-[#ffd700] hover:bg-[#ffdf33] text-[#3a3000] font-black py-4 rounded-full tracking-[0.25em] uppercase text-[0.75rem] xl:text-[0.85rem] active:scale-[0.98] transition-all duration-300 shadow-[0_10px_30px_-10px_rgba(255,215,0,0.25)] hover:shadow-[0_15px_40px_-5px_rgba(255,215,0,0.4)] mb-5 lg:mb-6 cursor-pointer"
               >
-                Create Account
+                Sign In
               </button>
 
               <Link
-                to="/login"
+                to="/register"
                 className="text-[0.65rem] xl:text-[0.7rem] uppercase tracking-[0.15em] text-[#d0c6ab] hover:text-[#ffd700] transition-all duration-300 font-medium cursor-pointer relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[1px] after:-bottom-1 after:left-0 after:bg-[#ffd700] after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left after:transition-transform after:duration-300"
               >
-                Already have an account? Login inside.
+                New to Luxe? Create an account.
               </Link>
             </div>
           </form>
         </div>
       </section>
-
-      {/* Redundancy removal: no custom scrollbar CSS needed because overflow-hidden enforces absolute viewport binding */}
     </div>
   );
 }

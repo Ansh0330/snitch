@@ -27,7 +27,7 @@ const sendTokenResponse = async (user, res, message) => {
 };
 
 export const register = async (req, res) => {
-  const { email, password, contact, fullname , isSeller} = req.body;
+  const { email, password, contact, fullname, isSeller } = req.body;
 
   try {
     const existingUser = await userModel.findOne({
@@ -40,11 +40,44 @@ export const register = async (req, res) => {
         .json({ success: false, message: "Email or contact already exists" });
     }
 
-    const user = await userModel.create({ email, password, contact, fullname, role: isSeller ? "seller" : "buyer" });
+    const user = await userModel.create({
+      email,
+      password,
+      contact,
+      fullname,
+      role: isSeller ? "seller" : "buyer",
+    });
 
     await sendTokenResponse(user, res, "User registered successfully");
   } catch (error) {
     console.error("Error registering user:", error);
     res.status(500).json({ success: false, message: "Error registering user" });
+  }
+};
+
+export const login = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await userModel.findOne({ email });
+
+    if (!user) {
+      return res
+        .status(400)
+        .json({ success: false, message: "No user found with this email" });
+    }
+
+    const isMatch = await user.comparePassword(password);
+
+    if (!isMatch) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid password" });
+    }
+
+    await sendTokenResponse(user, res, "User logged in successfully");
+  } catch (error) {
+    console.error("Error logging in user:", error);
+    res.status(500).json({ success: false, message: "Error logging in user" });
   }
 };
