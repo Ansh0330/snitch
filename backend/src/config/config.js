@@ -33,6 +33,12 @@ if (!process.env.NODE_ENV) {
   throw new Error("NODE_ENV is not defined in environment variables");
 }
 
+if (!process.env.IMAGEKIT_PRIVATE_KEY) {
+  throw new Error(
+    "IMAGEKIT_PRIVATE_KEY is not defined in environment variables",
+  );
+}
+
 export const config = {
   PORT: process.env.PORT || 3000,
   MONGO_URI: process.env.MONGO_URI || "",
@@ -40,5 +46,6 @@ export const config = {
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || "",
   GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || "",
   GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL || "",
+  IMAGEKIT_PRIVATE_KEY: process.env.IMAGEKIT_PRIVATE_KEY || "",
   NODE_ENV: process.env.NODE_ENV || "development",
 };

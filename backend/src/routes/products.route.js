@@ -1,0 +1,28 @@
+import { Router } from "express";
+import { isSeller } from "../middlewares/auth.middleware.js";
+import { createProduct } from "../controllers/products.controller.js";
+import multer from "multer";
+import { createProductValidator } from "../validators/products.validator.js";
+
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 10 * 1024 * 1024 }, // Limit file size to 10MB
+});
+
+const productsRouter = Router();
+
+
+/**
+ * @route POST /api/products
+ * @description Create a new product
+ * @access Private (Seller only)
+ */
+productsRouter.post(
+  "/",
+  isSeller,
+  upload.array("images", 7),
+  createProductValidator,
+  createProduct,
+);
+
+export default productsRouter;
