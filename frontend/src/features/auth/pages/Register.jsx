@@ -225,12 +225,26 @@ export default function Register() {
                 Create Account
               </button>
 
-              <Link
-                to="/login"
-                className="text-[0.65rem] xl:text-[0.7rem] uppercase tracking-[0.15em] text-[#d0c6ab] hover:text-[#ffd700] transition-all duration-300 font-medium cursor-pointer relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[1px] after:-bottom-1 after:left-0 after:bg-[#ffd700] after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left after:transition-transform after:duration-300"
-              >
-                Already have an account? Login inside.
-              </Link>
+              <div className="flex flex-col items-center gap-5">
+                <a
+                  href="/api/auth/google"
+                  className="group text-[0.65rem] xl:text-[0.7rem] uppercase tracking-[0.15em] text-[#d0c6ab] hover:text-[#ffd700] transition-all duration-300 font-medium cursor-pointer relative flex items-center justify-center gap-2 after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[1px] after:-bottom-1.5 after:left-0 after:bg-[#ffd700] after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left after:transition-transform after:duration-300"
+                >
+                  <img
+                    src="https://www.svgrepo.com/show/475656/google-color.svg"
+                    alt="Google"
+                    className="w-3.5 h-3.5 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  />
+                  <span>Continue with google</span>
+                </a>
+
+                <Link
+                  to="/login"
+                  className="text-[0.65rem] xl:text-[0.7rem] uppercase tracking-[0.15em] text-[#d0c6ab] hover:text-[#ffd700] transition-all duration-300 font-medium cursor-pointer relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[1px] after:-bottom-1 after:left-0 after:bg-[#ffd700] after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left after:transition-transform after:duration-300"
+                >
+                  Already have an account? Login inside.
+                </Link>
+              </div>
             </div>
           </form>
         </div>

@@ -15,7 +15,9 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
+      required: function () {
+        return !this.googleId; // Password is required only if googleId is not provided
+      },
     },
     fullname: {
       type: String,
@@ -25,6 +27,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["buyer", "seller", "admin"],
       default: "buyer",
+    },
+    googleId: {
+      type: String,
+      default: null,
     },
   },
   { timestamps: true },

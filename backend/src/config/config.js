@@ -13,8 +13,32 @@ if (!process.env.JWT_SECRET) {
   throw new Error("JWT_SECRET is not defined in environment variables");
 }
 
+if (!process.env.GOOGLE_CLIENT_ID) {
+  throw new Error("GOOGLE_CLIENT_ID is not defined in environment variables");
+}
+
+if (!process.env.GOOGLE_CLIENT_SECRET) {
+  throw new Error(
+    "GOOGLE_CLIENT_SECRET is not defined in environment variables",
+  );
+}
+
+if (!process.env.GOOGLE_CALLBACK_URL) {
+  throw new Error(
+    "GOOGLE_CALLBACK_URL is not defined in environment variables",
+  );
+}
+
+if (!process.env.NODE_ENV) {
+  throw new Error("NODE_ENV is not defined in environment variables");
+}
+
 export const config = {
   PORT: process.env.PORT || 3000,
   MONGO_URI: process.env.MONGO_URI || "",
   JWT_SECRET: process.env.JWT_SECRET || "your_jwt_secret_key",
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || "",
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || "",
+  GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL || "",
+  NODE_ENV: process.env.NODE_ENV || "development",
 };

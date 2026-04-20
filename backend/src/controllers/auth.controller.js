@@ -22,6 +22,7 @@ const sendTokenResponse = async (user, res, message) => {
       fullname: user.fullname,
       contact: user.contact,
       role: user.role,
+      googleId: user.googleId,
     },
   });
 };
@@ -80,4 +81,34 @@ export const login = async (req, res) => {
     console.error("Error logging in user:", error);
     res.status(500).json({ success: false, message: "Error logging in user" });
   }
+};
+
+export const googleAuthCallback = async (req, res) => {
+  const { id, displayName, emails, photos } = req.user;
+  const email = emails[0].value;
+  const profilePic = photos[0].value;
+
+  let user = await userModel.findOne({ email });
+
+  if (!user) {
+    user = await userModel.create({
+      email,
+      fullname: displayName,
+      contact: "N/A",
+      googleId: id,
+      role: "buyer",
+    });
+  }
+
+  const token = jwt.sign({ id: user._id }, config.JWT_SECRET, {
+    expiresIn: "7d",
+  });
+
+  res.cookie("token", token, {
+    httpOnly: true,
+    sameSite: "strict",
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  });
+
+  res.redirect("http://localhost:5173/dashboard");
 };
