@@ -44,3 +44,22 @@ export const createProduct = async (req, res) => {
     res.status(500).json({ success: false, message: "Error creating product" });
   }
 };
+
+export const getSellerProducts = async (req, res) => {
+  try {
+    const seller = req.user; // Assuming the authenticated user is available in req.user
+
+    const products = await productModel.find({ sellerId: seller.id });
+
+    res.status(200).json({
+      success: true,
+      message: "Seller products fetched successfully",
+      products,
+    });
+  } catch (error) {
+    console.error("Error fetching seller products:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Error fetching seller products" });
+  }
+};
