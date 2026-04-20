@@ -45,7 +45,7 @@ export default function Login() {
         <img
           alt="High-end luxury fashion"
           className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
-          src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2070&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1618375601660-3e6842f5b791?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#131313] via-[#131313]/60 to-transparent flex flex-col justify-end p-12 lg:p-16 xl:p-24 pb-16 xl:pb-20">
           <div className="max-w-md relative z-10 hover:translate-y-[-5px] transition-transform duration-700">
