@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router';
-// import { useProducts } from '../hook/useProducts'; // Uncomment if using create hook
+import { useProducts } from '../hook/useProducts'; // Uncomment if using create hook
 
 export default function CreateProduct() {
   const navigate = useNavigate();
+  const { handleCreateProduct } = useProducts();
 
   const [formData, setFormData] = useState({
     title: '',
@@ -41,11 +42,25 @@ export default function CreateProduct() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log("Publishing Product: ", formData, "Images:", images);
     // Add useProducts integration here
-    
+    try {
+      const data = new FormData();
+      data.append("title", formData.title);
+      data.append("description", formData.description);
+      data.append("priceAmount", formData.priceAmount);
+      data.append("priceCurrency", formData.priceCurrency);
+      images.forEach((image) => {
+        data.append("images", image);
+      });
+      await handleCreateProduct(data);
+      navigate("/");
+    } catch (error) {
+      console.log("Error creating product: ",error);
+    }
+
   };
 
   return (
