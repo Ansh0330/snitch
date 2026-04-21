@@ -15,6 +15,7 @@ export default function CreateProduct() {
 
   const [images, setImages] = useState([]);
   const fileInputRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleImageClick = () => {
     if (fileInputRef.current) {
@@ -44,8 +45,9 @@ export default function CreateProduct() {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     console.log("Publishing Product: ", formData, "Images:", images);
-    // Add useProducts integration here
+    
     try {
       const data = new FormData();
       data.append("title", formData.title);
@@ -59,8 +61,9 @@ export default function CreateProduct() {
       navigate("/");
     } catch (error) {
       console.log("Error creating product: ",error);
+    } finally {
+      setIsSubmitting(false);
     }
-
   };
 
   return (
@@ -249,9 +252,21 @@ export default function CreateProduct() {
             
             <button 
               type="submit"
-              className="w-full md:w-auto bg-[#ffd700] text-[#3a3000] px-12 py-5 rounded-full font-bold tracking-[0.2em] uppercase text-[0.75rem] shadow-[0_0_40px_rgba(255,215,0,0.1)] hover:shadow-[0_0_60px_rgba(255,215,0,0.2)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+              disabled={isSubmitting}
+              className={`w-full md:w-auto bg-[#ffd700] text-[#3a3000] px-12 py-5 rounded-full font-bold tracking-[0.2em] uppercase text-[0.75rem] flex items-center justify-center gap-3 transition-all ${
+                isSubmitting 
+                  ? 'opacity-70 cursor-not-allowed scale-[0.98]' 
+                  : 'shadow-[0_0_40px_rgba(255,215,0,0.1)] hover:shadow-[0_0_60px_rgba(255,215,0,0.2)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer'
+              }`}
             >
-                Publish to Gallery
+              {isSubmitting ? (
+                <>
+                  <span className="material-symbols-outlined text-[1rem] animate-spin">progress_activity</span>
+                  <span>Publishing...</span>
+                </>
+              ) : (
+                'Publish to Gallery'
+              )}
             </button>
           </section>
         </form>
