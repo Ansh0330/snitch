@@ -22,12 +22,15 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Login Form Submitted", formData);
-    await handleLogin({
+    const user = await handleLogin({
       email: formData.email,
       password: formData.password,
     });
-
-    navigate("/");
+    if(user.role === "seller"){
+      navigate("/seller/dashboard");
+    }else{
+      navigate("/");
+    }
   };
 
   return (

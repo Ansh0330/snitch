@@ -26,6 +26,16 @@ export const register = async ({
   }
 };
 
+export const getMe = async () => {
+  try {
+    const response = await authApiInstance.get("/me");
+    return response.data;
+  } catch (error) {
+    console.log("Error in getMe api", error);
+  }
+}
+
+
 export const login = async ({ email, password }) => {
   try {
     const response = await authApiInstance.post("/login", {

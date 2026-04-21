@@ -33,7 +33,11 @@ export default function Register() {
       isSeller: formData.isSeller,
     });
 
-    navigate("/");
+    if(user.role === "seller"){
+      navigate("/seller/dashboard");
+    }else{
+      navigate("/");
+    }
   };
 
   return (
