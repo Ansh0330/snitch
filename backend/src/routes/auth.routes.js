@@ -24,7 +24,6 @@ authRouter.post("/login", validateLoginUser, login);
 authRouter.get("/me", isAuthenticated, getMe);
 
 //* Google OAuth routes */
-
 // Route to initiate Google OAuth authentication
 authRouter.get(
   "/google",

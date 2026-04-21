@@ -23,3 +23,12 @@ export const getSellerProducts = async () => {
         throw error;
     }
 }
+
+export const getAllProducts = async () => {
+    try {
+        const response = await productsApiInstance.get("/allProducts");
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
