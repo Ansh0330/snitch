@@ -95,7 +95,7 @@ const Home = () => {
               <div className="h-0.5 w-16 bg-[#ffd700]"></div>
             </div>
             {allProducts?.length > 0 && (
-                <button className="text-[#d0c6ab] text-[0.65rem] uppercase tracking-[0.3em] font-bold border-b border-[#4d4732] pb-1 hover:text-[#ffd700] hover:border-[#ffd700] transition-all cursor-pointer self-start md:self-auto">
+                <button onClick={() => navigate('/artistry')} className="text-[#d0c6ab] text-[0.65rem] uppercase tracking-[0.3em] font-bold border-b border-[#4d4732] pb-1 hover:text-[#ffd700] hover:border-[#ffd700] transition-all cursor-pointer self-start md:self-auto">
                     Explore All Pieces
                 </button>
             )}

@@ -96,9 +96,9 @@ const ProductDetail = () => {
       </nav>
 
       {/* Main content wrapper bounds to exactly screen height so everything fits without scrolling to see it */}
-      <main className="min-h-screen flex flex-col md:flex-row pt-24 pb-12">
+      <main className="min-h-screen flex flex-col md:flex-row">
         {/* Left Side: Image Gallery */}
-        <section className="w-full md:w-1/2 relative bg-[#1c1b1b] flex flex-col group rounded-r-3xl md:rounded-r-none">
+        <section className="w-full md:w-1/2 relative bg-[#1c1b1b] flex flex-col group rounded-r-3xl md:rounded-r-none pt-24 pb-12">
           <div className="flex-grow flex items-center justify-center p-6 md:p-10">
             {/* The image is constrained by max-height so it won't push content below the viewport fold */}
             <div className="relative w-full aspect-[4/5] max-w-[24rem] xl:max-w-[28rem] max-h-[60vh] mx-auto group/image">
@@ -160,7 +160,7 @@ const ProductDetail = () => {
         </section>
 
         {/* Right Side: Details Section */}
-        <section className="w-full md:w-1/2 bg-[#131313] flex flex-col justify-center px-8 md:px-20 relative">
+        <section className="w-full md:w-1/2 bg-[#131313] flex flex-col justify-center px-8 md:px-20 relative pt-24 pb-12">
           <div className="max-w-xl mx-auto md:mx-0 relative z-10">
             <div className="space-y-2 mb-8">
               <p className="font-['Manrope'] text-[0.7rem] tracking-[0.4em] uppercase text-[#dbc677]">Curated by {product.sellerId?.fullname || 'Aurelian Studio'}</p>
