@@ -32,3 +32,12 @@ export const getAllProducts = async () => {
         throw error;
     }
 }
+
+export const getProductById = async (productId) => {
+    try {
+        const response = await productsApiInstance.get(`/detail/${productId}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}

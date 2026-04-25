@@ -80,3 +80,26 @@ export const getAllProducts = async (req, res) => {
       .json({ success: false, message: "Error fetching all products" });
   }
 };
+
+export const getProductById = async (req, res) => {
+  try {
+    const { productId } = req.params;
+    const product = await productModel.findById(productId).populate("sellerId", "fullname email"); // Populate seller details (name and email)
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Product fetched successfully",
+      product,
+    });
+  } catch (error) {
+    console.error("Error fetching product by ID:", error);
+    res.status(500).json({ success: false, message: "Error fetching product by ID" });
+  }
+}

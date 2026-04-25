@@ -25,17 +25,16 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Submitted", formData);
-    await handleRegister({
+    const user = await handleRegister({
       fullname: formData.fullName,
       email: formData.email,
       contact: formData.contactNumber,
       password: formData.password,
       isSeller: formData.isSeller,
     });
-
-    if(user.role === "seller"){
+    if (user.role === "seller") {
       navigate("/seller/dashboard");
-    }else{
+    } else {
       navigate("/");
     }
   };

@@ -19,8 +19,10 @@ const ProductCard = ({ product }) => {
     setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
+  const navigate = useNavigate();
+
   return (
-    <div className="group flex flex-col cursor-pointer transition-transform hover:-translate-y-1 duration-500">
+    <div onClick={() => navigate(`/product/${product._id}`)}  className="group flex flex-col cursor-pointer transition-transform hover:-translate-y-1 duration-500">
       <div className="relative aspect-[4/5] overflow-hidden bg-[#1c1b1b]">
         {images.length > 0 ? (
           <img

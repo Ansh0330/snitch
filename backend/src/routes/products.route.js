@@ -3,6 +3,7 @@ import { isSeller } from "../middlewares/auth.middleware.js";
 import {
   createProduct,
   getAllProducts,
+  getProductById,
   getSellerProducts,
 } from "../controllers/products.controller.js";
 import multer from "multer";
@@ -41,5 +42,13 @@ productsRouter.get("/seller", isSeller, getSellerProducts);
  * @access Public
  */
 productsRouter.get("/allProducts", getAllProducts);
+
+/*
+ * @route GET /api/products/productId
+ * @description Get all products (for buyers)
+ * @access Public
+*/
+
+productsRouter.get("/detail/:productId", getProductById);
 
 export default productsRouter;
