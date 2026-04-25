@@ -86,7 +86,7 @@ export default function Dashboard() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-x-8 gap-y-16">
                 {sellerProducts.map((product) => (
                   <article key={product._id} className="group cursor-pointer">
-                    <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-[#1c1b1b] mb-6 transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-transparent group-hover:border-[#4d4732]/20">
+                    <div onClick={() => navigate(`/seller/product/${product._id}`)} className="relative aspect-[3/4] overflow-hidden rounded-xl bg-[#1c1b1b] mb-6 transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-transparent group-hover:border-[#4d4732]/20">
                       {product.images && product.images.length > 0 ? (
                         <img 
                           alt={product.title} 

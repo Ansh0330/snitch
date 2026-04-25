@@ -104,7 +104,7 @@ const Home = () => {
           {allProducts && allProducts.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-[#1c1b1b]">
                 {allProducts.map((product) => (
-                  <article key={product._id} className="group relative aspect-[3/4] bg-[#1c1b1b] border-r border-b border-[#4d4732]/20 overflow-hidden cursor-pointer">
+                  <article onClick={() => navigate(`/product/${product._id}`)} key={product._id} className="group relative aspect-[3/4] bg-[#1c1b1b] border-r border-b border-[#4d4732]/20 overflow-hidden cursor-pointer">
                     {product.images && product.images.length > 0 ? (
                         <img 
                           alt={product.title} 
