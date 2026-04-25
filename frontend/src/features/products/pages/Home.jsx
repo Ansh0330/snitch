@@ -27,9 +27,9 @@ const Home = () => {
           
           <div className="hidden md:flex items-center gap-10 text-[0.7rem] uppercase tracking-widest font-bold">
             <a className="text-[#ffd700] border-b-2 border-[#ffd700] pb-1 cursor-pointer transition-colors duration-300 pointer-events-none">Collections</a>
-            <a className="text-[#fff6df] opacity-60 hover:text-[#ffd700] cursor-pointer transition-colors duration-300">Artistry</a>
-            <a className="text-[#fff6df] opacity-60 hover:text-[#ffd700] cursor-pointer transition-colors duration-300">Experience</a>
-            <a className="text-[#fff6df] opacity-60 hover:text-[#ffd700] cursor-pointer transition-colors duration-300">Concierge</a>
+            <a onClick={() => navigate('/artistry')} className="text-[#fff6df] opacity-60 hover:text-[#ffd700] cursor-pointer transition-colors duration-300">Artistry</a>
+            <a onClick={() => navigate('/experience')} className="text-[#fff6df] opacity-60 hover:text-[#ffd700] cursor-pointer transition-colors duration-300">Experience</a>
+            <a onClick={() => navigate('/concierge')} className="text-[#fff6df] opacity-60 hover:text-[#ffd700] cursor-pointer transition-colors duration-300">Concierge</a>
           </div>
           
           <div className="flex items-center gap-6">
