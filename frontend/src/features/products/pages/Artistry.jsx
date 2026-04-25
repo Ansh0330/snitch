@@ -137,9 +137,12 @@ const Artistry = () => {
       <main className="pt-40 pb-24 px-8 max-w-[1600px] mx-auto">
         {/* Editorial Header */}
         <header className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div className="max-w-2xl">
-            <p className="text-[0.75rem] uppercase tracking-[0.3em] text-[#d0c6ab] font-bold mb-4">Curated Selection / Vol. 04</p>
-            <h1 className="text-[2.75rem] leading-none font-extrabold tracking-tighter text-[#fff6df] font-display">THE ARTISTRY SERIES</h1>
+          <div className="max-w-2xl space-y-6">
+            <div>
+              <p className="text-[0.75rem] uppercase tracking-[0.3em] text-[#d0c6ab] font-bold mb-4">Curated Selection / Vol. 04</p>
+              <h1 className="text-[2.75rem] leading-none font-extrabold tracking-tighter text-[#fff6df] font-display">THE ARTISTRY SERIES</h1>
+            </div>
+            <div className="h-0.5 w-16 bg-[#ffd700]"></div>
           </div>
           <div className="text-right">
             <p className="text-[#d0c6ab] text-[0.75rem] uppercase tracking-widest max-w-[200px] leading-relaxed">
