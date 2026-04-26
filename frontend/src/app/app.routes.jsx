@@ -8,6 +8,8 @@ import Home from "../features/products/pages/Home";
 import Artistry from "../features/products/pages/Artistry";
 import ProductDetail from "../features/products/pages/ProductDetail";
 import SellerProductDetails from "../features/products/pages/SellerProductDetails";
+import Experience from "../features/common/pages/Experience";
+
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -21,10 +23,13 @@ export const routes = createBrowserRouter([
     path:"/login",
     element:<Login/>
   },
-
   {
     path:"/artistry",
     element:<Artistry/>
+  },
+  {
+    path:"/experience",
+    element:<Experience/>
   },
   {
     path: "/product/:productId",

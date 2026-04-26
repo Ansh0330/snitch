@@ -45,10 +45,18 @@ productsRouter.get("/allProducts", getAllProducts);
 
 /*
  * @route GET /api/products/productId
- * @description Get all products (for buyers)
+ * @description Get product by Id (for buyers)
  * @access Public
 */
 
 productsRouter.get("/detail/:productId", getProductById);
+
+/*
+ * @route POST /api/products/:productId/variants
+ * @description Add a new variant to a product (for sellers)
+ * @access Private (Seller only)
+*/
+
+productsRouter.post("/:productId/variants", isSeller, upload.array("images", 7), createProductValidator, );
 
 export default productsRouter;

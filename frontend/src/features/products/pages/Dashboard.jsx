@@ -60,7 +60,7 @@ export default function Dashboard() {
           <header className="mb-16 md:mb-24 mt-6">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div>
-                <span className="text-[0.75rem] text-[#d0c6ab] uppercase tracking-[0.3em] font-bold mb-4 block">Seller name</span>
+                <span className="text-[0.75rem] text-[#d0c6ab] uppercase tracking-[0.3em] font-bold mb-4 block">{sellerProducts[0]?.sellerId.fullname}</span>
                 <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-[#fff6df]">Curated Masterpieces</h1>
               </div>
               

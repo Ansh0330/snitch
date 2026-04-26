@@ -49,7 +49,7 @@ export const getSellerProducts = async (req, res) => {
   try {
     const seller = req.user; // Assuming the authenticated user is available in req.user
 
-    const products = await productModel.find({ sellerId: seller.id });
+    const products = await productModel.find({ sellerId: seller.id }).populate("sellerId", "fullname email"); // Populate seller details (name and email)
 
     res.status(200).json({
       success: true,
