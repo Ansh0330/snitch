@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useProducts } from '../hook/useProducts';
-import { useNavigate, useLocation } from 'react-router';
-import Navbar from '../../common/components/Navbar';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useProducts } from "../hook/useProducts";
+import { useNavigate, useLocation } from "react-router";
+import Navbar from "../../common/components/Navbar";
 
 const ProductCard = ({ product }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -23,7 +23,10 @@ const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate(`/product/${product._id}`)}  className="group flex flex-col cursor-pointer transition-transform hover:-translate-y-1 duration-500">
+    <div
+      onClick={() => navigate(`/product/${product._id}`)}
+      className="group flex flex-col cursor-pointer transition-transform hover:-translate-y-1 duration-500"
+    >
       <div className="relative aspect-[4/5] overflow-hidden bg-[#1c1b1b]">
         {images.length > 0 ? (
           <img
@@ -33,8 +36,12 @@ const ProductCard = ({ product }) => {
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center text-[#999077] gap-3">
-             <span className="material-symbols-outlined text-4xl opacity-50">imagesmode</span>
-             <span className="text-[0.6rem] uppercase tracking-[0.2em] font-bold opacity-50">Studio Shot Pending</span>
+            <span className="material-symbols-outlined text-4xl opacity-50">
+              imagesmode
+            </span>
+            <span className="text-[0.6rem] uppercase tracking-[0.2em] font-bold opacity-50">
+              Studio Shot Pending
+            </span>
           </div>
         )}
 
@@ -61,7 +68,9 @@ const ProductCard = ({ product }) => {
                 <span
                   key={idx}
                   className={`w-1.5 h-1.5 transition-colors ${
-                    idx === currentImageIndex ? 'bg-[#ffd700]' : 'bg-[#d0c6ab]/30'
+                    idx === currentImageIndex
+                      ? "bg-[#ffd700]"
+                      : "bg-[#d0c6ab]/30"
                   }`}
                 ></span>
               ))}
@@ -70,10 +79,14 @@ const ProductCard = ({ product }) => {
         )}
       </div>
       <div className="mt-6">
-        <h3 className="text-xl font-bold tracking-tight text-[#fff6df] uppercase line-clamp-1">{product.title}</h3>
-        <p className="text-[#d0c6ab] text-sm mt-2 font-light line-clamp-1">{product.description || 'Elevated Essentials'}</p>
+        <h3 className="text-xl font-bold tracking-tight text-[#fff6df] uppercase line-clamp-1">
+          {product.title}
+        </h3>
+        <p className="text-[#d0c6ab] text-sm mt-2 font-light line-clamp-1">
+          {product.description || "Elevated Essentials"}
+        </p>
         <p className="text-[#ffd700] font-semibold mt-4 tracking-wider">
-            {product.price?.currency} {product.price?.amount?.toLocaleString()}
+          {product.price?.currency} {product.price?.amount?.toLocaleString()}
         </p>
       </div>
     </div>
@@ -93,15 +106,19 @@ const Artistry = () => {
   return (
     <div className="bg-[#131313] text-[#e5e2e1] min-h-screen font-manrope selection:bg-[#ffd700] selection:text-[#3a3000]">
       {/* TopNavBar */}
-      <Navbar/>
+      <Navbar />
 
       <main className="pt-40 pb-24 px-8 max-w-[1600px] mx-auto">
         {/* Editorial Header */}
         <header className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl space-y-6">
             <div>
-              <p className="text-[0.75rem] uppercase tracking-[0.3em] text-[#d0c6ab] font-bold mb-4">Curated Selection / Vol. 04</p>
-              <h1 className="text-[2.75rem] leading-none font-extrabold tracking-tighter text-[#fff6df] font-display">THE ARTISTRY SERIES</h1>
+              <p className="text-[0.75rem] uppercase tracking-[0.3em] text-[#d0c6ab] font-bold mb-4">
+                Curated Selection / Vol. 04
+              </p>
+              <h1 className="text-[2.75rem] leading-none font-extrabold tracking-tighter text-[#fff6df] font-display">
+                THE ARTISTRY SERIES
+              </h1>
             </div>
             <div className="h-0.5 w-16 bg-[#ffd700]"></div>
           </div>
@@ -121,26 +138,38 @@ const Artistry = () => {
           </section>
         ) : (
           <div className="w-full py-32 flex flex-col items-center justify-center border border-[#1c1b1b] bg-[#1c1b1b]/20">
-            <span className="material-symbols-outlined text-4xl text-[#4d4732] mb-6">view_in_ar</span>
-            <p className="text-[#d0c6ab] text-xs max-w-sm text-center uppercase tracking-[0.2em] font-bold">The artistry series is currently being curated.</p>
+            <span className="material-symbols-outlined text-4xl text-[#4d4732] mb-6">
+              view_in_ar
+            </span>
+            <p className="text-[#d0c6ab] text-xs max-w-sm text-center uppercase tracking-[0.2em] font-bold">
+              The artistry series is currently being curated.
+            </p>
           </div>
         )}
 
         {/* Newsletter Section (Editorial Inset) */}
         <section className="mt-48 bg-[#1c1b1b] p-12 md:p-24 flex flex-col items-center text-center">
-          <span className="material-symbols-outlined text-[#ffd700] text-4xl mb-8">mail</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#fff6df] mb-6 uppercase">Private Access</h2>
+          <span className="material-symbols-outlined text-[#ffd700] text-4xl mb-8">
+            mail
+          </span>
+          <h2 className="text-3xl font-bold tracking-tight text-[#fff6df] mb-6 uppercase">
+            Private Access
+          </h2>
           <p className="text-[#d0c6ab] max-w-lg mb-12 leading-relaxed">
-            Join our collective to receive exclusive early access to the upcoming 'Celestial' collection.
+            Join our collective to receive exclusive early access to the
+            upcoming 'Celestial' collection.
           </p>
-          <form onSubmit={(e) => e.preventDefault()} className="w-full max-w-md flex flex-col md:flex-row gap-4">
-            <input 
-              className="flex-1 bg-[#2a2a2a] border-none text-[#e5e2e1] px-6 py-4 focus:ring-1 focus:ring-[#ffd700]/40 outline-none" 
-              placeholder="Email Address" 
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="w-full max-w-md flex flex-col md:flex-row gap-4"
+          >
+            <input
+              className="flex-1 bg-[#2a2a2a] border-none text-[#e5e2e1] px-6 py-4 focus:ring-1 focus:ring-[#ffd700]/40 outline-none"
+              placeholder="Email Address"
               type="email"
             />
             <button className="bg-[#ffd700] text-[#3a3000] px-8 py-4 font-bold uppercase tracking-widest text-xs transition-transform active:scale-95 cursor-pointer">
-                Subscribe
+              Subscribe
             </button>
           </form>
         </section>
@@ -148,12 +177,22 @@ const Artistry = () => {
 
       {/* Footer */}
       <footer className="bg-[#1C1B1B] w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="text-xl font-black text-[#FFF6DF] uppercase tracking-[0.2em]">Luxe.</div>
+        <div className="text-xl font-black text-[#FFF6DF] uppercase tracking-[0.2em]">
+          Luxe.
+        </div>
         <div className="flex gap-8 items-center">
-          <a className="font-manrope text-[10px] uppercase tracking-widest text-[#D0C6AB] hover:text-[#FFD700] underline-offset-4 hover:underline transition-opacity opacity-80 hover:opacity-100 cursor-pointer">Sustainability</a>
-          <a className="font-manrope text-[10px] uppercase tracking-widest text-[#D0C6AB] hover:text-[#FFD700] underline-offset-4 hover:underline transition-opacity opacity-80 hover:opacity-100 cursor-pointer">Contact</a>
-          <a className="font-manrope text-[10px] uppercase tracking-widest text-[#D0C6AB] hover:text-[#FFD700] underline-offset-4 hover:underline transition-opacity opacity-80 hover:opacity-100 cursor-pointer">Shipping</a>
-          <a className="font-manrope text-[10px] uppercase tracking-widest text-[#D0C6AB] hover:text-[#FFD700] underline-offset-4 hover:underline transition-opacity opacity-80 hover:opacity-100 cursor-pointer">Legal</a>
+          <a className="font-manrope text-[10px] uppercase tracking-widest text-[#D0C6AB] hover:text-[#FFD700] underline-offset-4 hover:underline transition-opacity opacity-80 hover:opacity-100 cursor-pointer">
+            Sustainability
+          </a>
+          <a className="font-manrope text-[10px] uppercase tracking-widest text-[#D0C6AB] hover:text-[#FFD700] underline-offset-4 hover:underline transition-opacity opacity-80 hover:opacity-100 cursor-pointer">
+            Contact
+          </a>
+          <a className="font-manrope text-[10px] uppercase tracking-widest text-[#D0C6AB] hover:text-[#FFD700] underline-offset-4 hover:underline transition-opacity opacity-80 hover:opacity-100 cursor-pointer">
+            Shipping
+          </a>
+          <a className="font-manrope text-[10px] uppercase tracking-widest text-[#D0C6AB] hover:text-[#FFD700] underline-offset-4 hover:underline transition-opacity opacity-80 hover:opacity-100 cursor-pointer">
+            Legal
+          </a>
         </div>
         <div className="font-manrope text-[10px] uppercase tracking-widest text-[#D0C6AB] opacity-60">
           © {new Date().getFullYear()} LUXE. All Rights Reserved.
