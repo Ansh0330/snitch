@@ -62,6 +62,7 @@ export default function Dashboard() {
               <div>
                 <span className="text-[0.75rem] text-[#d0c6ab] uppercase tracking-[0.3em] font-bold mb-4 block">{sellerProducts[0]?.sellerId.fullname}</span>
                 <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-[#fff6df]">Curated Masterpieces</h1>
+                <div className="h-0.5 w-16 bg-[#ffd700] mt-4"></div>
               </div>
               
               {sellerProducts?.length > 0 && (
@@ -145,7 +146,7 @@ export default function Dashboard() {
 
       {/* Footer Credit */}
       <footer className="p-8 text-center relative z-10 border-t border-[#1c1b1b] bg-[#131313] font-manrope">
-         <p className="text-[0.6rem] uppercase tracking-[0.5em] text-[#999077] opacity-40">The Luxe Standard © 2024</p>
+         <p className="text-[0.6rem] uppercase tracking-[0.5em] text-[#999077] opacity-40">The Luxe Standard © {new Date().getFullYear()}</p>
       </footer>
     </div>
   );

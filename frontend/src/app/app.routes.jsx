@@ -9,6 +9,7 @@ import Artistry from "../features/products/pages/Artistry";
 import ProductDetail from "../features/products/pages/ProductDetail";
 import SellerProductDetails from "../features/products/pages/SellerProductDetails";
 import Experience from "../features/common/pages/Experience";
+import Concierge from "../features/common/pages/Concierge";
 
 export const routes = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const routes = createBrowserRouter([
   {
     path:"/experience",
     element:<Experience/>
+  },
+  {
+    path:"/concierge",
+    element:<Concierge/>
   },
   {
     path: "/product/:productId",
