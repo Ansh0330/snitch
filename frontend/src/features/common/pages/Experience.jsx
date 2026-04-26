@@ -77,9 +77,9 @@ const Experience = () => {
               <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
-                alt="Luxury interior" 
+                alt="Luxury fashion editorial" 
                 className="w-full h-full object-cover grayscale opacity-80 brightness-75" 
-                src="https://ik.imagekit.io/ansh3003/luxe/IMG_3509_1jhysBeV_Z.jpg"
+                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-[#131313] via-transparent to-[#131313] opacity-60"></div>
             </div>
